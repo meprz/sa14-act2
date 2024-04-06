@@ -19,9 +19,11 @@ document.addEventListener("submit", async function () {
         const url = "https://api.weatherapi.com/v1/"
         const apiKey = "7f766abfceb24c5e98044829242703"
         const cityField = document.getElementsByName("name")[0]
-        const body = await fetch(`${url}forecast.json?key=${apiKey}&q=${cityField.value}&aqi=no`).then((response) => response.json())
+        const body = await fetch(`${url}forecast.json?key=${apiKey}&q=${cityField.value}&aqi=no&days=5`).then((response) => response.json())
         
-        // console.log(`${url}current.json?key=${apiKey}&q=${cityField.value}&aqi=no`)
+        console.log(body.forecast.forecastday)
+        console.log(body.forecast.forecastday.length)
+
         const dateTime = body["location"]["localtime"]
         const currTemp = body["current"]["temp_f"]
         const humidity = body["current"]["humidity"]
@@ -41,8 +43,8 @@ document.addEventListener("submit", async function () {
                               ${conditionPicElement}<br><br>
                               5-Day Forecast (Including Today):<br>`
         
-        body.forecast.forecastday.forEach (day => {
-            // console.log(day)
+        for (let day of body["forecast"]["forecastday"]) {
+            console.log(day)
             const dateTime  = day["date"]
             const highTemp  = day["day"]["maxtemp_f"]
             const lowTemp   = day["day"]["mintemp_f"]
@@ -56,8 +58,8 @@ document.addEventListener("submit", async function () {
                                    Min Temp (F): ${lowTemp}<br>
                                    Average Humidity: ${humidity}%<br>
                                    Conditions: ${conditionText}
-                                   ${conditionPicElement}<br><br>`
-        })
+                                   ${conditionPicElement}<br>`
+        }
 
         pElement.innerHTML = content
         form.insertAdjacentElement("afterend", pElement)

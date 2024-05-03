@@ -1,0 +1,14 @@
+body {
+    background-color: darkslategray;
+    color: azure;
+    font-family: fantasy;
+    margin: 0;
+    padding: 30px;
+}
+
+#animation {
+    position: absolute;
+    left: 120px;
+    top: 120px;
+    transition: left 0.5s ease, top 0.5s ease;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="form.css">
+    </head>
+
+    <title>
+        Form Handler
+    </title>
+
+    <body>
+        <h1>
+            Welcome to the Best Form Handler on the Web!
+        </h1>
+        
+        <h2>
+            Registration Form
+        </h2>
+        
+        <form id="registration">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+            <span id="usernameErr" class="error"></span><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <span id="emailErr" class="error"></span><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <span id="passwordErr" class="error"></span><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+
+        <script src="form.js"></script>
+    </body>
+</html>
